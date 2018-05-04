@@ -1,0 +1,31 @@
+{
+  "name": "stagem/zfc-listener",
+  "description": "ZF config based event listeners",
+  "type": "zf-module",
+  "license": "MIT",
+  "keywords": [
+    "zf",
+    "event listener"
+  ],
+  "authors": [
+    {
+      "name": "Serhii Popov",
+      "email": "popow.serhii@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "Stagem\\ZfcListener\\": "src/"
+    }
+  },
+  "extra": {
+    "zf": {
+      "config-provider": "Stagem\\ZfcListener\\ConfigProvider",
+      "component": "Stagem\\ZfcListener"
+    }
+  }
+}
