@@ -13,7 +13,7 @@
  * @license https://opensource.org/licenses/MIT The MIT License (MIT)
  */
 return [
-    'zend-eventmanager' => [
+    'event_manager' => [
         'definitions' => []
     ],
 ];

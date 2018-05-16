@@ -42,7 +42,7 @@ class Module
         $container = $e->getApplication()->getServiceManager();
         $sem = $eventManager->getSharedManager(); // shared events manager
 
-        $listeners = $container->get('config')['zend-eventmanager']['definitions'];
+        $listeners = $container->get('config')['event_manager']['definitions'];
 
         // This would raise an exception for invalid structure
         foreach ($listeners as $listener) {
