@@ -14,6 +14,6 @@
  */
 return [
     'event_manager' => [
-        'definitions' => []
+        'definitions' => [],
     ],
 ];

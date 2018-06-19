@@ -1,37 +1,35 @@
 <?php
 /**
  * The MIT License (MIT)
- * Copyright (c) 2018 Serhii Popov
+ * Copyright (c) 2018 Stagem Team
  * This source file is subject to The MIT License (OSL 3.0)
  * that is bundled with this package in the file LICENSE.txt.
  * It is also available through the world-wide-web at this URL:
  * https://opensource.org/licenses/MIT
  *
  * @category Stagem
- * @package Stagem_Work
+ * @package Stagem_ZfcListener
  * @author Serhii Popov <popow.serhii@gmail.com>
  * @license https://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
-use Agere\Work\Listener\WorkListener;
-use Agere\Status\Controller\StatusController;
-
 return [
     'definitions' => [
         [
-            'listener' => WorkListener::class,
+            'listener' => \Acme\Work\Listener\WorkListener::class,
             'method' => 'postWorkPaid',
             'event' => 'change.work-paid.post',
-            'identifier' => StatusController::class,
+            'identifier' => \Acme\Status\Controller\StatusController::class,
             'priority' => 100,
         ],
         [
-            // This listener shouldn't be initialized
-            'listener' => WorkListener::class,
+            'listener' => \Stagem\Work\Listener\WorkListener::class,
             'method' => 'change.work-completed.post',
             'event' => 'postWorkCompleted',
-            'identifier' => StatusController::class,
+            'identifier' => \Stagem\Status\Controller\StatusController::class,
             'priority' => 100,
         ],
+        // other events
+        // [...],
     ],
 ];

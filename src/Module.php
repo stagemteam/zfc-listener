@@ -52,7 +52,7 @@ class Module
                 if (!$lazyListener instanceof LazyEventListener) {
                     throw new Exception\InvalidArgumentException(sprintf(
                         'All listeners must be LazyEventListener instances or definitions; received %s',
-                        (is_object($listener) ? get_class($listener) : gettype($listener))
+                        (is_object($lazyListener) ? get_class($lazyListener) : gettype($lazyListener))
                     ));
                 }
 
