@@ -14,7 +14,7 @@ Run command `composer require stagem/zfc-listener`
 ## Usage
 Register module in `config/modules.config.php` with `'Stagem\ZfcListener'`
 
-Add your events in `config/module.config.php`
+Add your events in `your/module/config/module.config.php`
 ```php
 return [
     'event_manager' => [
@@ -39,13 +39,13 @@ dependencies of `WorkListener` and method `postWorkPaid` will be execute.
 ## Tips  
 If your module has many listeners it's good practice split your config in separate file
 ```php
-// config/module.config.php
+// your/module/config/module.config.php
 return [
     'event_manager' => require 'listener.config.php',
 ];
 ```
 ```php
-// config/listener.config.php
+// your/module/config/listener.config.php
 return [
     'definitions' => [
         [
