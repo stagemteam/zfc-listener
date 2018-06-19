@@ -8,10 +8,14 @@ By the scene Shared Event Manager is used.
 This module is intended to solve this problem and allow register listeners with config and `Zend\EventManager\LazyEventListener`.
 Simply speaking, this module register Lazy Listeners and resolve all listener dependencies directly event arise. 
 
-## Usage
-Register your events in `config/module.config.php`
-```php
+# Installation
+Run command `composer require stagem/zfc-listener`
 
+## Usage
+Register module in `config/modules.config.php` with `'Stagem\ZfcListener'`
+
+Add your events in `config/module.config.php`
+```php
 return [
     'event_manager' => [
         'definitions' => [
