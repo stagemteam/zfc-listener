@@ -56,7 +56,12 @@ class Module
                     ));
                 }
 
-                $sem->attach($listener['identifier'], $lazyListener->getEvent(), $lazyListener);
+                $sem->attach(
+                    $listener['identifier'],
+                    $lazyListener->getEvent(),
+                    $lazyListener,
+                    $lazyListener->getPriority()
+                );
             }
         }
     }
