@@ -22,6 +22,9 @@ return [
             [
                 'listener' => \Acme\Work\Listener\WorkListener::class,
                 'method' => 'postWorkPaid',
+                // or
+                #'listener' => [\Acme\Work\Listener\WorkListener::class, 'postWorkPaid'],
+                
                 'event' => 'change.work-paid.post',
                 'identifier' => \Acme\Status\Controller\StatusController::class,
                 'priority' => 100,

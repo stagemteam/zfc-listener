@@ -47,12 +47,15 @@ class Module
         // This would raise an exception for invalid structure
         foreach ($listeners as $listener) {
             if (is_array($listener)) {
+                $definition = $listener;
+                if (is_array($definition['listener'])) {
+                    $definition['listener'] = $listener['listener'][0];
+                    $definition['method'] = $listener['listener'][1];
+                }
+
                 $events = (array) $listener['event'];
-
                 foreach ($events as $event) {
-                    $definition = $listener;
                     $definition['event'] = $event;
-
                     $lazyListener = new LazyEventListener($definition, $container);
                     if (!$lazyListener instanceof LazyEventListener) {
                         throw new Exception\InvalidArgumentException(sprintf(
