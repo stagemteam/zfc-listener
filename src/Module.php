@@ -47,21 +47,26 @@ class Module
         // This would raise an exception for invalid structure
         foreach ($listeners as $listener) {
             if (is_array($listener)) {
-                $lazyListener = new LazyEventListener($listener, $container);
+                $events = (array) $listener['event'];
 
-                if (!$lazyListener instanceof LazyEventListener) {
-                    throw new Exception\InvalidArgumentException(sprintf(
-                        'All listeners must be LazyEventListener instances or definitions; received %s',
-                        (is_object($lazyListener) ? get_class($lazyListener) : gettype($lazyListener))
-                    ));
+                foreach ($events as $event) {
+                    $definition = $listener;
+                    $definition['event'] = $event;
+
+                    $lazyListener = new LazyEventListener($definition, $container);
+                    if (!$lazyListener instanceof LazyEventListener) {
+                        throw new Exception\InvalidArgumentException(sprintf(
+                            'All listeners must be LazyEventListener instances or definitions; received %s',
+                            (is_object($lazyListener) ? get_class($lazyListener) : gettype($lazyListener))
+                        ));
+                    }
+                    $sem->attach(
+                        $definition['identifier'],
+                        $lazyListener->getEvent(),
+                        $lazyListener,
+                        $lazyListener->getPriority()
+                    );
                 }
-
-                $sem->attach(
-                    $listener['identifier'],
-                    $lazyListener->getEvent(),
-                    $lazyListener,
-                    $lazyListener->getPriority()
-                );
             }
         }
     }
